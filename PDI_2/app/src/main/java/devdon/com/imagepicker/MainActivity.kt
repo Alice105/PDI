@@ -155,154 +155,186 @@ class MainActivity : AppCompatActivity() {
                 )
                 view.visibility = View.INVISIBLE
                 return true
+
+                //if (view.get == ACTION_DRAG_STARTED)
+
             }
+
+            override fun onDragEvent(v: View, event: DragEvent): Boolean {
+
+                val dragEvent = event.action
+                //val view = event.localState as View
+
+                when (dragEvent) {
+                    DragEvent.ACTION_DRAG_STARTED->
+                        Log.d("Start", v.id.toString())
+
+
+                    DragEvent.ACTION_DRAG_ENTERED ->
+                        Log.d("Drag Enter", v.id.toString())
+
+                    DragEvent.ACTION_DRAG_EXITED ->
+                        Log.d("Drag Exit", v.id.toString())
+
+                    DragEvent.ACTION_DROP ->
+                        Log.d("Drag", v.id.toString())
+    }
+    return true
+}
+
+
+
+
+
 /*
-         fun onDrag(View v, DragEvent dragEvent):Boolean  {
-            var current :View = v
-            var result:Boolean = true
-            var action:Int = dragEvent.getAction()
+fun onDrag(View v, DragEvent dragEvent):Boolean  {
+var result:Boolean = true
+var action:Int = dragEvent.getAction()
+// var from: String
+// var to : String
 
-            when (action) {
-               DragEvent.ACTION_DRAG_STARTED->
-               {
-               Log.d("Drop", "started")
-               }
+when (action) {
+   DragEvent.ACTION_DRAG_STARTED->
+   {
+   Log.d("Drop", "started")
+   }
 
-               DragEvent.ACTION_DRAG_ENTERED->
-                {
-               Log.d("Drop", "entered")
-                }
+   DragEvent.ACTION_DRAG_ENTERED->
+    {
 
-                DragEvent.ACTION_DRAG_EXITED->
-                 {
-                    Log.d("Drop", "exit")
-                 }
+        Log.d("Drop", "entered")
+    }
 
-                DragEvent.ACTION_DROP->
-                {
-                  Log.d("Drop", "Drop")
-                }
-                 DragEvent.ACTION_DRAG_ENDED->
-                 {
-                  Log.d("Drop", "End")
-                 }
+    DragEvent.ACTION_DRAG_EXITED->
+     {
+        Log.d("Drop", "exit")
+     }
 
-                DragEvent.ACTION_DRAG_LOCATION->
-                {
-                    Log.d("Drop", "Drag location")
-                }
-                else->
-                {
-                  result = false
-                }
-            }
-             return result;
-        }
+    DragEvent.ACTION_DROP->
+    {
+      Log.d("Drop", "Drop")//inten 抓圖片原本的樣子，然後再換成圖片應該變成的樣子
+    }
+     DragEvent.ACTION_DRAG_ENDED->
+     {
+      Log.d("Drop", "End")
+     }
+
+    DragEvent.ACTION_DRAG_LOCATION->
+    {
+        Log.d("Drop", "Drag location")
+    }
+    else->
+    {
+      result = false
+    }
+}
+ return result;
+}
 */
-        }
+}
 
-    //private val albumAppButtonHandler = View.OnClickListener { view ->
-    //    takeImageFromAlbumWithIntent()
-    //}
-    private val albumAppButtonHandler = OnClickListener {
-        val random = Random()
-        val imgIndex : IntArray= IntArray(11)
-        var flag:Boolean
-        var i:Int
-       // i=0
-        //flag = true
-        i = Random().nextInt(1234)%3
-        //i=1
-        when (i)
-        {
-            0->{
-                imageId[0] = R.drawable.bg_don
-                imageId[1] = R.drawable.a11
-                imageId[2] = R.drawable.a12
-                imageId[3] = R.drawable.a13
-                imageId[4] = R.drawable.a14
-                imageId[5] = R.drawable.a15
-                imageId[6] = R.drawable.a16
-                imageId[7] = R.drawable.a17
-                imageId[8] = R.drawable.a18
-                imageId[9] = R.drawable.a19
-            }
-            1->{
-                imageId[0] = R.drawable.bg_don
-                imageId[1] = R.drawable.b11
-                imageId[2] = R.drawable.b12
-                imageId[3] = R.drawable.b13
-                imageId[4] = R.drawable.b14
-                imageId[5] = R.drawable.b15
-                imageId[6] = R.drawable.b16
-                imageId[7] = R.drawable.b17
-                imageId[8] = R.drawable.b18
-                imageId[9] = R.drawable.b19
-            }
-            2->{
-                imageId[0] = R.drawable.bg_don
-                imageId[1] = R.drawable.c11
-                imageId[2] = R.drawable.c12
-                imageId[3] = R.drawable.c13
-                imageId[4] = R.drawable.c14
-                imageId[5] = R.drawable.c15
-                imageId[6] = R.drawable.c16
-                imageId[7] = R.drawable.c17
-                imageId[8] = R.drawable.c18
-                imageId[9] = R.drawable.c19
-            }
-        }
-        imageView1.setImageResource(imageId[1])
-        imageView2.setImageResource(imageId[2])
-        imageView3.setImageResource(imageId[3])
-        imageView4.setImageResource(imageId[4])
-        imageView5.setImageResource(imageId[5])
-        imageView6.setImageResource(imageId[6])
-        imageView7.setImageResource(imageId[7])
-        imageView8.setImageResource(imageId[8])
-        imageView9.setImageResource(imageId[9])
+//private val albumAppButtonHandler = View.OnClickListener { view ->
+//    takeImageFromAlbumWithIntent()
+//}
+private val albumAppButtonHandler = OnClickListener {
+val random = Random()
+val imgIndex : IntArray= IntArray(11)
+var flag:Boolean
+var i:Int
+// i=0
+//flag = true
+i = Random().nextInt(1234)%3
+//i=1
+when (i)
+{
+0->{
+    imageId[0] = R.drawable.bg_don
+    imageId[1] = R.drawable.a11
+    imageId[2] = R.drawable.a12
+    imageId[3] = R.drawable.a13
+    imageId[4] = R.drawable.a14
+    imageId[5] = R.drawable.a15
+    imageId[6] = R.drawable.a16
+    imageId[7] = R.drawable.a17
+    imageId[8] = R.drawable.a18
+    imageId[9] = R.drawable.a19
+}
+1->{
+    imageId[0] = R.drawable.bg_don
+    imageId[1] = R.drawable.b11
+    imageId[2] = R.drawable.b12
+    imageId[3] = R.drawable.b13
+    imageId[4] = R.drawable.b14
+    imageId[5] = R.drawable.b15
+    imageId[6] = R.drawable.b16
+    imageId[7] = R.drawable.b17
+    imageId[8] = R.drawable.b18
+    imageId[9] = R.drawable.b19
+}
+2->{
+    imageId[0] = R.drawable.bg_don
+    imageId[1] = R.drawable.c11
+    imageId[2] = R.drawable.c12
+    imageId[3] = R.drawable.c13
+    imageId[4] = R.drawable.c14
+    imageId[5] = R.drawable.c15
+    imageId[6] = R.drawable.c16
+    imageId[7] = R.drawable.c17
+    imageId[8] = R.drawable.c18
+    imageId[9] = R.drawable.c19
+}
+}
+imageView1.setImageResource(imageId[1])
+imageView2.setImageResource(imageId[2])
+imageView3.setImageResource(imageId[3])
+imageView4.setImageResource(imageId[4])
+imageView5.setImageResource(imageId[5])
+imageView6.setImageResource(imageId[6])
+imageView7.setImageResource(imageId[7])
+imageView8.setImageResource(imageId[8])
+imageView9.setImageResource(imageId[9])
+}
+
+private fun displayImage(bitmap: Bitmap) {
+imageView1.setImageBitmap(bitmap)
+imageView2.setImageBitmap(bitmap)
+imageView3.setImageBitmap(bitmap)
+imageView4.setImageBitmap(bitmap)
+imageView5.setImageBitmap(bitmap)
+imageView6.setImageBitmap(bitmap)
+imageView7.setImageBitmap(bitmap)
+imageView8.setImageBitmap(bitmap)
+imageView9.setImageBitmap(bitmap)
+}
+
+
+
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+super.onActivityResult(requestCode, resultCode, data)
+println("收到 result code $requestCode")
+
+when(requestCode) {
+ACTION_CAMERA_REQUEST_CODE -> {
+    if(resultCode == Activity.RESULT_OK && data != null){
+        displayImage(data.extras.get("data") as Bitmap)
     }
+}
 
-    private fun displayImage(bitmap: Bitmap) {
-        imageView1.setImageBitmap(bitmap)
-        imageView2.setImageBitmap(bitmap)
-        imageView3.setImageBitmap(bitmap)
-        imageView4.setImageBitmap(bitmap)
-        imageView5.setImageBitmap(bitmap)
-        imageView6.setImageBitmap(bitmap)
-        imageView7.setImageBitmap(bitmap)
-        imageView8.setImageBitmap(bitmap)
-        imageView9.setImageBitmap(bitmap)
-    }
-
-
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        println("收到 result code $requestCode")
-
-        when(requestCode) {
-            ACTION_CAMERA_REQUEST_CODE -> {
-                if(resultCode == Activity.RESULT_OK && data != null){
-                    displayImage(data.extras.get("data") as Bitmap)
-                }
-            }
-
-            ACTION_ALBUM_REQUEST_CODE -> {
-                if(resultCode == Activity.RESULT_OK && data != null){
-                    val resolver = this.contentResolver
-                    val bitmap = MediaStore.Images.Media.getBitmap(resolver, data.data)
-                    displayImage(bitmap)
-
-                }
-            }
-            else -> {
-                println("no handler onActivityReenter")
-            }
-        }
-
+ACTION_ALBUM_REQUEST_CODE -> {
+    if(resultCode == Activity.RESULT_OK && data != null){
+        val resolver = this.contentResolver
+        val bitmap = MediaStore.Images.Media.getBitmap(resolver, data.data)
+        displayImage(bitmap)
 
     }
+}
+else -> {
+    println("no handler onActivityReenter")
+}
+}
+
+
+}
 
 
 
